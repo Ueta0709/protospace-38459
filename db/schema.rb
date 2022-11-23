@@ -33,16 +33,6 @@ ActiveRecord::Schema.define(version: 2022_11_16_104928) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "commemnts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "content", null: false
-    t.bigint "prototype_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["prototype_id"], name: "index_commemnts_on_prototype_id"
-    t.index ["user_id"], name: "index_commemnts_on_user_id"
-  end
-
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "prototype_id", null: false
@@ -80,8 +70,6 @@ ActiveRecord::Schema.define(version: 2022_11_16_104928) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "commemnts", "prototypes"
-  add_foreign_key "commemnts", "users"
   add_foreign_key "comments", "prototypes"
   add_foreign_key "comments", "users"
   add_foreign_key "prototypes", "users"
