@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :move_to_index, except: [:index]
+  before_action :move_to_index, except: [:index,:show]
   before_action :move_to_index, only: [:edit]
   before_action :set_prototype, only: [:edit, :show, :update]
   before_action :authenticate_user!, except: [:index, :show]
@@ -18,7 +18,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to root_path
     else
-      render :new
+      render new_user_session_path
     end
   end
 
