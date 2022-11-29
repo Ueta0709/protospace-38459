@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :move_to_index, except: [:index,:show]
   before_action :edit_move_to_index, only: [:edit]
   before_action :set_prototype, only: [:edit, :show, :update]
-  before_action :authenticate_user!
+   
   
 
   def index
@@ -11,6 +11,7 @@ class PrototypesController < ApplicationController
 
   def new
     @prototype = Prototype.new
+    authenticate_user!
   end
 
   def create
@@ -29,7 +30,7 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    
+    authenticate_user!
   end
 
   def update
